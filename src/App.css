@@ -32,10 +32,3 @@
 .App-link {
   color: #61dafb;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .GoalsSection, .FoundationSection {
-    grid-template-columns: 1fr; /* Stack items vertically on small screens */
-  }
-}

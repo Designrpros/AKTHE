@@ -5,9 +5,7 @@ import './App.css';
 
 // Component imports
 import Home from './components/Home';
-import About from './components/About';
 import Services from './components/Services';
-import Contact from './components/Contact';
 
 // Adjusted Transparent Floating Toolbar Component
 const Toolbar = styled.div`

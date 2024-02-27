@@ -97,22 +97,24 @@ const ServicesSection = styled(BaseContentSection)`
 
 // Foundation Section with distinct styling
 const FoundationSection = styled(BaseContentSection)`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); // Two columns for wider screens
-  gap: 40px;
-  padding-top: 60px; // Increased padding to accommodate the icon
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 2rem;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
 
   &::before {
     content: '🏛️';
     font-size: 3rem;
-    grid-column: 1 / -1; // Span across all columns
-    justify-self: center; // Center the icon in the grid
-    margin-bottom: 20px; // Space between the icon and the content
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; // Adjust to a single column for mobile devices
-    padding-top: 80px; // Adjust padding if necessary
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
   }
 `;
 
@@ -245,16 +247,6 @@ const wrappedTextRevealVariants = {
   },
 };
 
-const BackgroundGraphics = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1; // Ensure it stays behind the content
-`;
-
 const Circle = styled(motion.div)`
   position: absolute;
   border-radius: 50%;
@@ -303,7 +295,24 @@ const MovingCircles = () => {
   };
   
   
-  
+  const FoundationComponent = () => {
+    return (
+      <FoundationSection
+        initial="hidden"
+        animate="visible"
+        variants={contentVariants}
+      >
+        <Heading>Vårt fundament</Heading>
+        <List>
+          <ListItem>Recovery: Vi legger til rette for helsetjenester som fremmer brukerens ressurser og styrker.</ListItem>
+          <ListItem>Supported Employment: Vi tilbyr støtte og veiledning for å hjelpe brukere inn i ordinært, lønnet arbeid.</ListItem>
+          <ListItem>Individuell Jobbstøtte: Vi tilbyr et forpliktende samarbeid med NAV for å hjelpe brukere med å finne og beholde en jobb.</ListItem>
+          <ListItem>Erfaringskompetanse: Vi bruker brukermedvirkning og erfaringskompetanse i alt vi gjør.</ListItem>
+          <ListItem>Sosialt entreprenørskap: Vi er innovative og sosialt engasjerte, og har som mål å være økonomisk bærekraftige.</ListItem>
+        </List>
+      </FoundationSection>
+    );
+  };
   
   
 
@@ -393,37 +402,7 @@ const Home = () => {
                     </ListItem>
                 </List>
                 </ServicesSection>
-                <FoundationSection
-        variants={contentVariants} // Apply the defined variants
-        initial="offscreen" // Initial state before scrolling into view
-        whileInView="onscreen" // State when the component scrolls into view
-        viewport={{ once: true, amount: 0.8 }} // Configuration for triggering the animation
-        >
-                {/* Our Foundation */}
-                <Heading>Vårt fundament</Heading>
-                <List>
-                    <ListItem>
-                    Recovery: Vi legger til rette for helsetjenester som fremmer brukerens
-                    ressurser og styrker.
-                    </ListItem>
-                    <ListItem>
-                    Supported Employment: Vi tilbyr støtte og veiledning for å hjelpe brukere
-                    inn i ordinært, lønnet arbeid.
-                    </ListItem>
-                    <ListItem>
-                    Individuell Jobbstøtte: Vi tilbyr et forpliktende samarbeid med NAV for å
-                    hjelpe brukere med å finne og beholde en jobb.
-                    </ListItem>
-                    <ListItem>
-                    Erfaringskompetanse: Vi bruker brukermedvirkning og erfaringskompetanse i
-                    alt vi gjør.
-                    </ListItem>
-                    <ListItem>
-                    Sosialt entreprenørskap: Vi er innovative og sosialt engasjerte, og har som
-                    mål å være økonomisk bærekraftige.
-                    </ListItem>
-                </List>
-                </FoundationSection>
+                <FoundationComponent />
                 <FinancialSection
         variants={contentVariants} // Apply the defined variants
         initial="offscreen" // Initial state before scrolling into view
