@@ -98,23 +98,24 @@ const ServicesSection = styled(BaseContentSection)`
 // Foundation Section with distinct styling
 const FoundationSection = styled(BaseContentSection)`
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr); // Two columns for wider screens
   gap: 40px;
-  padding-top: 60px;
+  padding-top: 60px; // Increased padding to accommodate the icon
 
   &::before {
     content: '🏛️';
     font-size: 3rem;
-    grid-column: 1 / -1;
-    justify-self: center;
-    margin-bottom: 20px;
+    grid-column: 1 / -1; // Span across all columns
+    justify-self: center; // Center the icon in the grid
+    margin-bottom: 20px; // Space between the icon and the content
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; /* Adjust for mobile */
-    padding-top: 80px; /* Adjust icon padding if needed */
+    grid-template-columns: 1fr; // Adjust to a single column for mobile devices
+    padding-top: 80px; // Adjust padding if necessary
   }
 `;
+
 
 
 
