@@ -33,22 +33,9 @@
   color: #61dafb;
 }
 
-/* App.css */
-/* App.css - Add a global font and background */
-body {
-  font-family: 'Times New Roman', serif; /* Or any vintage-style font you prefer */
-  background-color: #f4f4f4; /* Soft background color */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-a {
-  color: #d35400;
-  text-decoration: none; /* Remove underlines from links */
-}
-
-a:hover {
-  text-decoration: underline;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .GoalsSection, .FoundationSection {
+    grid-template-columns: 1fr; /* Stack items vertically on small screens */
+  }
 }

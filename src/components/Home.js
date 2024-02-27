@@ -61,17 +61,23 @@ const BaseContentSection = styled(motion.div)`
 // Goals Section with specific styling
 const GoalsSection = styled(BaseContentSection)`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Adjust based on content size
   gap: 20px;
   align-items: start;
 
   &::before {
     content: '🎯';
     font-size: 3rem;
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; // Span across all columns
     text-align: center;
+    margin-bottom: 20px; // Add space between the icon and the first item
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Single column layout on smaller screens
   }
 `;
+
 
 
 // Services Section with its unique styling
@@ -92,16 +98,21 @@ const ServicesSection = styled(BaseContentSection)`
 // Foundation Section with distinct styling
 const FoundationSection = styled(BaseContentSection)`
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // Two columns
+  grid-template-columns: repeat(2, 1fr); 
   gap: 40px;
-  padding-top: 60px; // Increased padding to accommodate the icon
+  padding-top: 60px;
 
   &::before {
     content: '🏛️';
     font-size: 3rem;
-    grid-column: 1 / -1; // Span across all columns
-    justify-self: center; // Center the icon in the grid
-    margin-bottom: 20px; // Space between the icon and the content
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Adjust for mobile */
+    padding-top: 80px; /* Adjust icon padding if needed */
   }
 `;
 
