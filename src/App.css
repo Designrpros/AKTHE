@@ -1,3 +1,5 @@
+/* App.css */
+
 .App {
   text-align: center;
 }
@@ -5,11 +7,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  font-family: Roboto, sans-serif; /* Set the font to Roboto */
+  color: white; /* Set the color to white */
+  position: relative; /* Required for the animation */
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-reveal infinite 20s ease-in-out forwards; /* New animation */
   }
 }
 
@@ -28,11 +33,22 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* App.css */
+/* App.css - Add a global font and background */
+body {
+  font-family: 'Times New Roman', serif; /* Or any vintage-style font you prefer */
+  background-color: #f4f4f4; /* Soft background color */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+a {
+  color: #d35400;
+  text-decoration: none; /* Remove underlines from links */
+}
+
+a:hover {
+  text-decoration: underline;
 }
