@@ -84,6 +84,8 @@ const StyledLink = styled(Link)`
   }
 `;
 
+
+
 // App Component
 const App = () => {
   const [activeTab, setActiveTab] = useState('home');

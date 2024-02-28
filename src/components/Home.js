@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import logo from './logo.svg'; 
+import emailjs from 'emailjs-com';
+
 import Studio51 from './Studio51.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -194,17 +196,30 @@ const FinancialSection = styled(BaseContentSection)`
 
 // Contact Section with specific styling
 const ContactSection = styled(BaseContentSection)`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 90%; // Adjust based on your design needs
+  max-width: 800px; // Keep it consistent with other sections
 
-  &::before {
-    content: '📞';
-    font-size: 3rem;
-    grid-column: 1 / -1;
-    text-align: center;
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin: 1rem auto;
+    align-items: center;
   }
 `;
+
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  margin: 20px; // Creates space between the icon and the form
+`;
+
 
 const foundationVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -239,6 +254,7 @@ const Paragraph = styled.p`
   font-size: 1.1rem;
   line-height: 1.5;
   margin: 1rem 0;
+  text-align: center; /* Center the heading */
 `;
 // Since we're changing the layout approach, List and ListItem adjustments might be minimal or unnecessary.
 // Ensure they fit the dark theme:
@@ -373,15 +389,76 @@ const MovingCircles = () => {
     );
   };
   
-  
+  // Styled components
+// Assuming ContactSection spans the full width of its parent
+
+
+const Form = styled.form`
+  width: 80%; // Takes up 80% of ContactSection width
+  display: flex;
+  flex-direction: column;
+  gap: 10px; // Adjust the gap between form elements
+
+  @media (max-width: 768px) {
+    width: 90%; // You can increase the width on smaller screens if needed
+  }
+`;
+
+
+
+const Input = styled.input`
+width: 95%;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #f0e7d;
+`;
+
+const Textarea = styled.textarea`
+width: 95%;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+background-color: #f0e7d;
+`;
+
+const Button = styled.button`
+padding: 10px 20px;
+background-color: #d0c7b8
+;
+color: black;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+
+&:hover {
+  background-color: #f0e7d;
+}
+`;
 
 
 // Home component
 const Home = () => {
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_te60jhg', 'template_94ms6tl', form.current, 'user_YOUR_USER_ID')
+            .then((result) => {
+                console.log(result.text);
+                alert('Message sent successfully!');
+            }, (error) => {
+                console.log(error.text);
+                alert('Failed to send the message, please try again.');
+            });
+    };
+
     // Animation variants for the heading
     const headingVariants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0, transition: { duration: 1.5 } },
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 1.5 } },
     };
   
     return (
@@ -429,7 +506,7 @@ const Home = () => {
         variants={contentVariants}
         initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.7 }}
       >
         <Heading>Våre mål</Heading>
                     <List>
@@ -447,7 +524,7 @@ const Home = () => {
         variants={contentVariants}
         initial="offscreen"
         whileInView="onscreen"
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.7 }}
         >
                 {/* Our Services */}
                 <Heading>Våre tilbud</Heading>
@@ -475,7 +552,7 @@ const Home = () => {
         variants={contentVariants} // Apply the defined variants
         initial="offscreen" // Initial state before scrolling into view
         whileInView="onscreen" // State when the component scrolls into view
-        viewport={{ once: true, amount: 0.8 }} // Configuration for triggering the animation
+        viewport={{ once: true, amount: 0.7 }} // Configuration for triggering the animation
         >
                 {/* Financial Foundation */}
                 <Heading>Økonomisk grunnlag</Heading>
@@ -486,12 +563,13 @@ const Home = () => {
                 </Paragraph>
                 </FinancialSection>
                 <ContactSection
-        variants={contentVariants} // Apply the defined variants
-        initial="offscreen" // Initial state before scrolling into view
-        whileInView="onscreen" // State when the component scrolls into view
-        viewport={{ once: true, amount: 0.8 }} // Configuration for triggering the animation
-        >
+                variants={contentVariants}
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.7 }}
+            >
                 {/* Contact Us */}
+                <IconContainer>📞</IconContainer>
                 <Heading>Kontakt oss</Heading>
                 <Paragraph>
                     For mer informasjon om AKTHE, kontakt oss på telefon eller e-post.
@@ -500,7 +578,14 @@ const Home = () => {
                     Telefon: 12345678 <br></br>
                     E-post: Post@post.com
                 </Paragraph>
-         </ContactSection>
+
+                <Form ref={form} onSubmit={sendEmail}>
+                    <Input type="text" name="user_name" placeholder="Name" required />
+                    <Input type="email" name="user_email" placeholder="Email" required />
+                    <Textarea name="message" placeholder="Message" rows="4" required />
+                    <Button type="submit">Send</Button>
+                </Form>
+            </ContactSection>
     </PageWrapper>
   );
 };
