@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import logo from './logo.svg'; // Adjust the path according to your file structure
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 // Wrapper for the entire page
 const PageWrapper = styled.div`
@@ -14,6 +16,7 @@ const PageWrapper = styled.div`
 
 // Full-screen introduction section with logo
 const FullScreenIntro = styled.div`
+position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,6 +40,34 @@ const LogoContainer = styled.div`
   align-items: center;
   gap: 20px; // Adjust the gap as needed
   margin-top: 2rem; // Adds some space above the logo container
+`;
+
+const ScrollArrow = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 100; // Ensure this is sufficiently high
+
+  // Adjust the icon size, color, and animation as needed
+  .chevron-icon {
+    font-size: 24px;
+    color: #333;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
 `;
 
 
@@ -94,7 +125,6 @@ const ServicesSection = styled(BaseContentSection)`
   }
 `;
 
-
 // Foundation Section with distinct styling
 const FoundationSection = styled(BaseContentSection)`
   display: flex;
@@ -103,20 +133,28 @@ const FoundationSection = styled(BaseContentSection)`
   gap: 20px;
   padding: 2rem;
 
+  &::before {
+    content: '🏛️';
+    font-size: 3rem;
+    align-self: center; // This ensures the icon aligns itself to the center of the flex container
+    margin-bottom: 20px;
+  }
+
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
-  }
+    place-items: center; // This centers the items both horizontally and vertically in their grid cells
 
-  &::before {
-    content: '🏛️';
-    font-size: 3rem;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
+    &::before {
+      grid-column: 1 / -1; // This makes sure the icon spans all columns
+      justify-self: center; // Explicitly center the icon horizontally in the grid layout
+    }
   }
 `;
+
+
+
 
 
 
@@ -156,7 +194,10 @@ const ContactSection = styled(BaseContentSection)`
   }
 `;
 
-
+const foundationVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
 
 // Define animation variants for the content sections
 const contentVariants = {
@@ -170,7 +211,7 @@ const contentVariants = {
       transition: {
         type: "spring",
         bounce: 0.4,
-        duration: 0.8
+        duration: 0.6
       }
     }
   };
@@ -253,6 +294,7 @@ const Circle = styled(motion.div)`
   border: 2px solid rgba(0, 0, 0, 0.2); // Semi-transparent black border
   width: 50px; // Initial size, will be overridden
   height: 50px; // Initial size, will be overridden
+  z-index: 1;
 `;
 
 
@@ -297,10 +339,11 @@ const MovingCircles = () => {
   
   const FoundationComponent = () => {
     return (
-      <FoundationSection
+        <FoundationSection
+        variants={foundationVariants}
         initial="hidden"
-        animate="visible"
-        variants={contentVariants}
+        whileInView="visible"
+        viewport={{ once: true }}
       >
         <Heading>Vårt fundament</Heading>
         <List>
@@ -355,6 +398,11 @@ const Home = () => {
           <img src={logo} alt="AKTHE Logo 3" style={{ maxWidth: '80px' }} />
           <img src={logo} alt="AKTHE Logo 4" style={{ maxWidth: '80px' }} />
         </LogoContainer>
+
+        <ScrollArrow onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
+            <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
+        </ScrollArrow>
+
       </FullScreenIntro>
       
       <GoalsSection
