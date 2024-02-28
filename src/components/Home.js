@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import logo from './logo.svg'; // Adjust the path according to your file structure
+import logo from './logo.svg'; 
+import Studio51 from './Studio51.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -42,6 +43,17 @@ const LogoContainer = styled.div`
   margin-top: 2rem; // Adds some space above the logo container
 `;
 
+const StyledLink = styled.a`
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); // Adjust the scale value as needed
+  }
+
+  & img {
+    max-width: 80px; // Adjust as needed
+  }
+`;
 const ScrollArrow = styled.div`
   position: absolute;
   bottom: 20px;
@@ -395,12 +407,17 @@ const Home = () => {
                 </CustomParagraph>
 
             </WrappedTextRevealContainer>
-        <LogoContainer>
-          <img src={logo} alt="AKTHE Logo 1" style={{ maxWidth: '80px' }} />
-          <img src={logo} alt="AKTHE Logo 2" style={{ maxWidth: '80px' }} />
-          <img src={logo} alt="AKTHE Logo 3" style={{ maxWidth: '80px' }} />
-          <img src={logo} alt="AKTHE Logo 4" style={{ maxWidth: '80px' }} />
-        </LogoContainer>
+            <LogoContainer>
+            <StyledLink href="http://www.holicven.no" rel="noopener noreferrer">
+                <img src={Studio51} alt="Høl i CV'en" />
+            </StyledLink>
+            <StyledLink href="http://www.rapclinic.no" rel="noopener noreferrer">
+                <img src={Studio51} alt="Studio 51" />
+            </StyledLink>
+            <StyledLink href="http://www.musictruck.no" rel="noopener noreferrer">
+                <img src={Studio51} alt="Music Truck" />
+            </StyledLink>
+            </LogoContainer>
 
         <ScrollArrow onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
             <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />

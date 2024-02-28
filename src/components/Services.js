@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import logo from './logo.svg'; // Ensure this path is correct
+import Studio51 from './Studio51.png';
 
 // Styled components
 const ServicesWrapper = styled(motion.div)`
@@ -67,7 +68,7 @@ const Services = () => {
       </Card>
 
       <Card>
-        <CardImage src={logo} alt="Rap Clinic" />
+        <CardImage src={Studio51} alt="Rap Clinic" />
         <CardTitle>Rap Clinic</CardTitle>
         <CardLink href="http://www.rapclinic.no">www.rapclinic.no</CardLink>
         <CardDescription>

@@ -32,3 +32,9 @@
 .App-link {
   color: #61dafb;
 }
+
+
+/* in index.css or App.css */
+body {
+  background-color: #f0e7d8; /* Sets the background color for the entire page */
+}

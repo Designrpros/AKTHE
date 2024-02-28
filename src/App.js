@@ -78,7 +78,7 @@ const TabButton = styled.button`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit; // Inherit color from parent (TabButton)
-
+  z-index: 2;
   &:hover {
     text-decoration: none; // Remove underline on hover
   }
