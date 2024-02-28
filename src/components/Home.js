@@ -253,13 +253,17 @@ const CustomHeading = styled(motion.h1)`
 `;
 
 const CustomParagraph = styled(motion.p)`
-  font-size: clamp(1rem, 2.5vw, 1.5rem); // Adjusts between 1rem and 1.5rem based on viewport width
-  color: #333;
-  margin: 1rem 0;
-  max-width: 800px;
-  text-align: right;
-  padding: 0 20px; // Adds padding to prevent text from touching the edges on small screens
+  font-size: clamp(1rem, 2.5vw, 1.5rem); // Responsive font size
+  line-height: 1.6; // Improved line height for readability
+  color: #333; // Adjust based on your design
+  text-align: right; // Justify or center based on preference
+  padding: 0 20px; // Padding to ensure it doesn't touch the edges
+  max-width: 800px; // Limit the width for better readability
+  margin: 20px auto; // Center it horizontally
+  font-family: 'Open Sans', sans-serif; // Example font
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 `;
+
 
 
 const TextRevealContainer = styled(motion.div)`
@@ -387,10 +391,9 @@ const Home = () => {
                 variants={wrappedTextRevealVariants}
             >
                 <CustomParagraph>
-                Aktivitetsbasert Helsehjelp (AKTHE) er en nyopprettet avdeling i Bærum
-                kommune som tilbyr helsefremmende aktiviteter for personer med psykiske
-                lidelser og rusutfordringer.
+                    <span style={{ fontWeight: 'bold' }}>Aktivitetsbasert Helsehjelp</span> er en nyopprettet avdeling i Bærum kommune som tilbyr helsefremmende aktiviteter for personer med psykiske lidelser og rusutfordringer.
                 </CustomParagraph>
+
             </WrappedTextRevealContainer>
         <LogoContainer>
           <img src={logo} alt="AKTHE Logo 1" style={{ maxWidth: '80px' }} />
