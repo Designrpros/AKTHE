@@ -581,7 +581,7 @@ const Home = () => {
             </LogoContainer>
 
 
-        <ScrollArrow onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
+        <ScrollArrow onClick={() => window.scrollBy({ top: window.innerHeight / 1.3, behavior: 'smooth' })}>
             <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
         </ScrollArrow>
 
