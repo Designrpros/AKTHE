@@ -4,7 +4,10 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
+import AKTHE from './Images/AKTHE.png';
+import HØL_I_CVEN_TRANS from './Images/HØL_I_CVEN_TRANS.png';
 import Studio51 from './Studio51.png';
+import Music_Truck from './Images/Music_Truck.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,12 +34,6 @@ position: relative;
   box-sizing: border-box;
 `;
 
-// Optional: Styled component for the logo image
-const LogoImage = styled.img`
-  width: 300px; 
-  margin-bottom: 5rem; // Adds some space below the logo
-`;
-
 const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -50,10 +47,6 @@ const StyledLink = styled.a`
 
   &:hover {
     transform: scale(1.1); // Adjust the scale value as needed
-  }
-
-  & img {
-    max-width: 80px; // Adjust as needed
   }
 `;
 const ScrollArrow = styled.div`
@@ -438,6 +431,54 @@ cursor: pointer;
 `;
 
 
+const AKTHELogo = styled.img`
+  width: 120px; // Example size, adjust as needed
+  height: auto;
+`;
+
+const HolicvenLogo = styled.img`
+  width: 100px; // Example size, adjust as needed
+  height: auto;
+`;
+
+const Studio51Logo = styled.img`
+  width: 100px; // Example size, adjust as needed
+  height: auto;
+`;
+
+// Adjust MusicTruckLogo size as needed
+const MusicTruckLogo = styled.img`
+  width: 100px; // Adjusted size
+  height: auto;
+`;
+
+const AnimatedLogo = styled(motion.img)`
+  width: 60%; // Initial size, adjust as needed
+  max-width: 300px; // Prevents the logo from becoming too large
+  height: auto; // Maintains aspect ratio
+
+  // Use a media query to adjust the size on smaller screens
+  @media (max-width: 768px) {
+    max-width: 150px; // Adjust this value based on your design needs
+  }
+`;
+
+
+// Define your animation variants
+const logoVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: { 
+    scale: 1,
+    opacity: 1,
+    transition: { 
+      duration: 0.8,
+      ease: "easeInOut",
+    }
+  },
+};
+
+
+
 // Home component
 const Home = () => {
     const form = useRef();
@@ -465,15 +506,19 @@ const Home = () => {
       <PageWrapper>
             <MovingCircles /> {/* This adds the moving circles to the background */}
         <FullScreenIntro>
-            <TextRevealContainer
-                initial="hidden"
-                animate="visible"
-                variants={textRevealVariants}
-            >
-                <CustomHeading>
-                AKTHE
-                </CustomHeading>
-            </TextRevealContainer>
+        <TextRevealContainer
+          initial="hidden"
+          animate="visible"
+          variants={textRevealVariants}
+        >
+          <AnimatedLogo 
+            src={AKTHE} 
+            alt="AKTHE Logo"
+            variants={logoVariants}
+            initial="hidden"
+            animate="visible"
+          />
+        </TextRevealContainer>
             <WrappedTextRevealContainer
                 initial="hidden"
                 animate="visible"
@@ -485,16 +530,17 @@ const Home = () => {
 
             </WrappedTextRevealContainer>
             <LogoContainer>
-            <StyledLink href="http://www.holicven.no" rel="noopener noreferrer">
-                <img src={Studio51} alt="Høl i CV'en" />
-            </StyledLink>
-            <StyledLink href="http://www.rapclinic.no" rel="noopener noreferrer">
-                <img src={Studio51} alt="Studio 51" />
-            </StyledLink>
-            <StyledLink href="http://www.musictruck.no" rel="noopener noreferrer">
-                <img src={Studio51} alt="Music Truck" />
-            </StyledLink>
+              <StyledLink href="http://www.holicven.no" rel="noopener noreferrer">
+                <HolicvenLogo src={HØL_I_CVEN_TRANS} alt="Høl i CV'en" />
+              </StyledLink>
+              <StyledLink href="http://www.rapclinic.no" rel="noopener noreferrer">
+                <Studio51Logo src={Studio51} alt="Studio 51" />
+              </StyledLink>
+              <StyledLink href="http://www.musictruck.no" rel="noopener noreferrer">
+                <MusicTruckLogo src={Music_Truck} alt="Music Truck" />
+              </StyledLink>
             </LogoContainer>
+
 
         <ScrollArrow onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}>
             <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />

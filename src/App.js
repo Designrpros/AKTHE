@@ -7,6 +7,9 @@ import './App.css';
 import Home from './components/Home';
 import Services from './components/Services';
 
+
+import AKTHE from './components/Images/AKTHE.png';
+
 const Toolbar = styled.div`
   display: flex;
   justify-content: center;
@@ -29,6 +32,11 @@ const Toolbar = styled.div`
   h1 {
     margin-right: auto;
     font-size: 1.2rem;
+  }
+
+  img {
+    height: 20px; /* Adjust based on your preference */
+    margin-right: 10px; /* Space between the image and the title */
   }
 
   @media (max-width: 768px) {
@@ -91,7 +99,9 @@ const App = () => {
   return (
     <Router>
       <Toolbar>
-        <h1>AKTHE</h1>
+        <h1>
+          <img src={AKTHE} alt="Fist" /> {/* Add this line */}
+        </h1>
         <nav>
           <TabButton onClick={() => handleTabClick('home')} active={activeTab === 'home'}>
             <StyledLink to="/">Om Oss</StyledLink>

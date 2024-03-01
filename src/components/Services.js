@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import logo from './logo.svg'; // Ensure this path is correct
-import Studio51 from './Studio51.png';
+
+import HØL_I_CVEN_TRANS from './Images/HØL_I_CVEN.png';
+import Studio51 from './Studio51.png'; 
+import Music_Truck from './Images/Music_Truck.png';
 
 // Styled components
 const ServicesWrapper = styled(motion.div)`
@@ -59,7 +61,7 @@ const Services = () => {
       transition={{ duration: 0.5 }}
     >
       <Card>
-        <CardImage src={logo} alt="Høl-i-CV-en" />
+        <CardImage src={HØL_I_CVEN_TRANS} alt="Høl-i-CV-en" />
         <CardTitle>Høl-i-CV-en</CardTitle>
         <CardLink href="http://www.holicven.no">www.holicven.no</CardLink>
         <CardDescription>
@@ -77,7 +79,7 @@ const Services = () => {
       </Card>
 
       <Card>
-        <CardImage src={logo} alt="The Music Truck" />
+        <CardImage src={Music_Truck} alt="The Music Truck" />
         <CardTitle>The Music Truck</CardTitle>
         <CardLink href="http://www.musictruck.no">www.musictruck.no</CardLink>
         <CardDescription>
@@ -86,7 +88,6 @@ const Services = () => {
       </Card>
 
       <Card>
-        <CardImage src={logo} alt="DSA Groups" />
         <CardTitle>DSA Groups</CardTitle>
         <CardDescription>
           Arbeidstilbud rettet mot mennesker på autismespekteret, fokusert på skogsdrift og naturvern.
