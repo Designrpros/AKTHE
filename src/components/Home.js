@@ -443,20 +443,32 @@ const AKTHELogo = styled.img`
 `;
 
 const HolicvenLogo = styled.img`
-  width: 100px; // Example size, adjust as needed
+  width: 100px; // Default size
   height: auto;
+
+  @media (max-width: 768px) {
+    width: 50px; // Smaller size on mobile devices
+  }
 `;
 
 const Studio51Logo = styled.img`
-  width: 100px; // Example size, adjust as needed
+  width: 100px; // Default size
   height: auto;
+
+  @media (max-width: 768px) {
+    width: 50px; // Smaller size on mobile devices
+  }
 `;
 
-// Adjust MusicTruckLogo size as needed
 const MusicTruckLogo = styled.img`
-  width: 100px; // Adjusted size
+  width: 100px; // Default size
   height: auto;
+
+  @media (max-width: 768px) {
+    width: 50px; // Smaller size on mobile devices
+  }
 `;
+
 
 const AnimatedLogo = styled(motion.img)`
   width: 60%; // Initial size, adjust as needed
