@@ -86,6 +86,22 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const ToolbarLogo = () => (
+  <Link to="/">
+    <Logo src={AKTHE} alt="AKTHE Logo" />
+  </Link>
+);
+
+const Logo = styled.img`
+  width: 80%; // Adjust based on your preference
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); // Slightly enlarge the logo on hover
+  }
+`;
+
+
 
 
 // App Component
@@ -100,7 +116,9 @@ const App = () => {
     <Router>
       <Toolbar>
         <h1>
-          <img src={AKTHE} alt="Fist" /> {/* Add this line */}
+          <StyledLink to="/">
+          <ToolbarLogo />
+          </StyledLink>
         </h1>
         <nav>
           <TabButton onClick={() => handleTabClick('home')} active={activeTab === 'home'}>

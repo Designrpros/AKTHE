@@ -3,6 +3,8 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
+import { Helmet } from 'react-helmet';
+
 
 import AKTHE from './Images/AKTHE.png';
 import HØL_I_CVEN_TRANS from './Images/HØL_I_CVEN_TRANS.png';
@@ -503,6 +505,27 @@ const Home = () => {
     };
   
     return (
+      <>
+        <Helmet>
+          <title>Våre Tilbud - AKTHE</title>
+          <meta name="description" content="AKTHE tilbyr helsefremmende aktiviteter for personer med psykiske lidelser og rusutfordringer i Bærum kommune." />
+          <script type="application/ld+json">
+          {`
+            {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "name": "AKTHE",
+              "url": "http://www.AKTHE.no",
+              "logo": "http://www.AKTHE.no/AKTHE.png",
+              "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+4790925489,
+                "contactType": "customer service"
+              }]
+            }
+          `}
+        </script>
+        </Helmet>
       <PageWrapper>
             <MovingCircles /> {/* This adds the moving circles to the background */}
         <FullScreenIntro>
@@ -633,6 +656,7 @@ const Home = () => {
                 </Form>
             </ContactSection>
     </PageWrapper>
+    </>
   );
 };
 
