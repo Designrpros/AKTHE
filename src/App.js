@@ -7,7 +7,6 @@ import './App.css';
 import Home from './components/Home';
 import Services from './components/Services';
 
-// Adjusted Transparent Floating Toolbar Component
 const Toolbar = styled.div`
   display: flex;
   justify-content: center;
@@ -17,18 +16,14 @@ const Toolbar = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0); /* Fully transparent background */
+  color: black; /* White text */
   backdrop-filter: blur(10px);
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
   nav {
     display: flex;
     gap: 10px;
-
-    & > button:last-child {
-      padding-right: 2rem; // Additional padding for the last button
-    }
   }
 
   h1 {
@@ -48,20 +43,20 @@ const Toolbar = styled.div`
 `;
 
 
-// Typography Improvement for TabButton
 const TabButton = styled.button`
   background-color: transparent;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
-  color: ${({ active }) => (active ? '#333' : '#333')};
-  border-bottom: ${({ active }) => (active ? '2px solid #333' : '2px solid transparent')};
+  color: black; /* White text */
+  border-bottom: ${({ active }) => (active ? '2px solid black' : '2px solid transparent')};
   font-weight: bold; // Make the text bold
   text-transform: uppercase; // Optional: uppercase letters for a more structured look
+  padding-right: 2rem;
 
   &:hover {
-    color: #007bff;
+    color: #007bff; /* Light blue on hover */
     border-bottom: 2px solid #007bff;
   }
 
@@ -71,7 +66,6 @@ const TabButton = styled.button`
   }
 `;
 
-// App Component remains the same
 
 
 // Styled Link Component to remove default styles
