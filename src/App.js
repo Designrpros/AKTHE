@@ -93,13 +93,16 @@ const ToolbarLogo = () => (
 );
 
 const Logo = styled.img`
-  width: 80%; // Adjust based on your preference
+  width: auto; // Adjust based on your preference, auto ensures it maintains aspect ratio
+  max-width: 120px; // Maximum width of the logo to ensure it doesn't get too large
+  height: auto; // Height is auto to maintain aspect ratio
   transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.1); // Slightly enlarge the logo on hover
   }
 `;
+
 
 
 
