@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import './App.css';
 
 // Component imports
@@ -116,6 +117,19 @@ const App = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-329ZE249M1"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-329ZE249M1');
+          `}
+        </script>
+      </Helmet>
     <Router>
       <Toolbar>
         <h1>
@@ -137,6 +151,7 @@ const App = () => {
         <Route path="/tilbud" element={<Services />} />
       </Routes>
     </Router>
+    </>
   );
 };
 
