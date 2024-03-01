@@ -364,14 +364,16 @@ const MovingCircles = () => {
   };
   
   
-  const FoundationComponent = () => {
-    return (
-        <FoundationSection
-        variants={foundationVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+// Assuming contentVariants is defined as shown previously
+const FoundationComponent = () => {
+  return (
+    <motion.div
+      variants={contentVariants} // Ensure this is the same as used in other sections
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.7 }}
+    >
+      <FoundationSection>
         <Heading>Vårt fundament</Heading>
         <List>
           <ListItem>Recovery: Vi legger til rette for helsetjenester som fremmer brukerens ressurser og styrker.</ListItem>
@@ -381,8 +383,10 @@ const MovingCircles = () => {
           <ListItem>Sosialt entreprenørskap: Vi er innovative og sosialt engasjerte, og har som mål å være økonomisk bærekraftige.</ListItem>
         </List>
       </FoundationSection>
-    );
-  };
+    </motion.div>
+  );
+};
+
   
   // Styled components
 // Assuming ContactSection spans the full width of its parent
